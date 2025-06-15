@@ -1,608 +1,935 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Lower Thirds</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #4361ee;
-      --secondary: #3f37c9;
-      --accent: #4895ef;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --success: #4cc9f0;
-      --danger: #f72585;
-      --warning: #f8961e;
-      --border-radius: 8px;
-      --transition: all 0.3s ease;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Lower Thirds System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body {
-      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-      color: var(--light);
-      min-height: 100vh;
-      padding: 20px;
-    }
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: var(--border-radius);
-      backdrop-filter: blur(10px);
-    }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      background: linear-gradient(to right, var(--accent), var(--success));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--secondary), var(--success));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-    .subtitle {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    .dashboard {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
 
-    @media (max-width: 768px) {
-      .dashboard {
-        grid-template-columns: 1fr;
-      }
-    }
+        @media (max-width: 992px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    .panel {
-      background: rgba(30, 30, 46, 0.8);
-      border-radius: var(--border-radius);
-      padding: 25px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .panel {
+            background: rgba(30, 30, 46, 0.85);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
 
-    .panel-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .panel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
 
-    .panel-header i {
-      font-size: 1.5rem;
-      margin-right: 10px;
-      color: var(--accent);
-    }
+        .panel-header i {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            color: var(--secondary);
+        }
 
-    .panel-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
+        .panel-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
 
-    .controls-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
-    }
+        .module-controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
 
-    .control-group {
-      margin-bottom: 20px;
-    }
+        .module-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
 
-    .control-label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: var(--accent);
-    }
+        .module-card.active {
+            border-color: var(--success);
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+        }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: var(--border-radius);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(10, 10, 20, 0.5);
-      color: var(--light);
-      font-size: 1rem;
-      transition: var(--transition);
-    }
+        .module-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
 
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
-    }
+        .module-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
 
-    .color-picker {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
 
-    .color-preview {
-      width: 30px;
-      height: 30px;
-      border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
 
-    .preview-area {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 30px;
-    }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
 
-    .preview-container {
-      position: relative;
-      height: 200px;
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
 
-    .preview-title {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-weight: 500;
-      color: var(--accent);
-    }
+        input:checked + .slider {
+            background-color: var(--success);
+        }
 
-    .lower-third {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: calc(100% - 40px);
-      background: linear-gradient(90deg, rgba(67, 97, 238, 0.8), rgba(63, 55, 201, 0.8));
-      border-radius: 8px;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      transition: var(--transition);
-      animation: slideIn 0.5s ease-out;
-    }
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
 
-    .lower-third.right {
-      left: auto;
-      right: 20px;
-    }
+        .control-group {
+            margin-bottom: 20px;
+        }
 
-    .lower-third.center {
-      left: 50%;
-      transform: translateX(-50%);
-    }
+        .control-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--secondary);
+        }
 
-    .logo-container {
-      width: 50px;
-      height: 50px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      margin-right: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(10, 10, 20, 0.6);
+            color: var(--light);
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
 
-    .logo-container img {
-      max-width: 100%;
-      max-height: 100%;
-    }
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+        }
 
-    .text-content {
-      flex: 1;
-    }
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .name {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
+        .range-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
 
-    .info {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
+        .preview-area {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
 
-    .graphics {
-      display: flex;
-      gap: 5px;
-      margin-left: 15px;
-    }
+        .preview-container {
+            position: relative;
+            height: 250px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow);
+        }
 
-    .graphic {
-      width: 8px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 4px;
-    }
+        .preview-title {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-weight: 500;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
 
-    .btn-group {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
+        .lower-third-container {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            right: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-    .btn {
-      padding: 12px 25px;
-      border-radius: var(--border-radius);
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+        .bookmark {
+            padding: 12px 20px;
+            background: linear-gradient(90deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.9));
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+            cursor: pointer;
+            min-width: 120px;
+            box-shadow: var(--shadow);
+        }
 
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
+        .bookmark:hover {
+            transform: translateY(-5px);
+        }
 
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--light);
-    }
+        .bookmark-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
+        .bookmark-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: center;
+        }
 
-    .btn-primary:hover {
-      background: var(--secondary);
-    }
+        .bookmark-info {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-align: center;
+        }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
+        .animation-styles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
 
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      opacity: 0.7;
-      font-size: 0.9rem;
-    }
+        .animation-style {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
 
-    @keyframes slideIn {
-      from {
-        transform: translateY(100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+        .animation-style:hover {
+            border-color: var(--secondary);
+        }
 
-    .style-2 {
-      background: linear-gradient(90deg, rgba(247, 37, 133, 0.8), rgba(248, 150, 30, 0.8));
-    }
+        .animation-style.active {
+            border-color: var(--success);
+            background: rgba(46, 204, 113, 0.1);
+        }
 
-    .style-3 {
-      background: linear-gradient(90deg, rgba(76, 201, 240, 0.8), rgba(72, 149, 239, 0.8));
-    }
+        .animation-style i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
 
-    .style-4 {
-      background: linear-gradient(90deg, rgba(104, 222, 122, 0.8), rgba(76, 201, 240, 0.8));
-    }
-  </style>
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border-radius: var(--border-radius);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            opacity: 0.8;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animation classes */
+        .animate-slide {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .animate-fade {
+            animation: fadeIn 1s ease;
+        }
+
+        .animate-bounce {
+            animation: bounceIn 1s ease;
+        }
+
+        .animate-pop {
+            animation: popIn 0.5s ease;
+        }
+
+        .animate-flip {
+            animation: flipIn 1s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+            }
+            80% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes flipIn {
+            0% {
+                transform: rotateX(90deg);
+                opacity: 0;
+            }
+            100% {
+                transform: rotateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1><i class="fas fa-tv"></i> Modern Lower Thirds</h1>
-      <p class="subtitle">Professional broadcast graphics with real-time preview and customization</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tv"></i> Enhanced Lower Thirds System</h1>
+            <p class="subtitle">Professional broadcast graphics with bookmarks, multiple animations, and full customization</p>
+        </header>
 
-    <div class="dashboard">
-      <div class="panel">
-        <div class="panel-header">
-          <i class="fas fa-sliders-h"></i>
-          <h2 class="panel-title">Configuration Panel</h2>
-        </div>
-        
-        <div class="controls-grid">
-          <div class="control-group">
-            <label class="control-label">Lower Third Style</label>
-            <select id="style-select">
-              <option value="style-1">Style 1 (Blue Gradient)</option>
-              <option value="style-2">Style 2 (Pink/Orange)</option>
-              <option value="style-3">Style 3 (Teal/Blue)</option>
-              <option value="style-4">Style 4 (Green/Teal)</option>
-            </select>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label">Position</label>
-            <select id="position-select">
-              <option value="left">Left</option>
-              <option value="center">Center</option>
-              <option value="right">Right</option>
-            </select>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label">Name</label>
-            <input type="text" id="name-input" value="John Doe" placeholder="Enter name">
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label">Title/Info</label>
-            <input type="text" id="info-input" value="Senior Product Designer" placeholder="Enter info">
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label">Animation Duration</label>
-            <input type="range" id="duration-slider" min="0.5" max="3" step="0.1" value="1">
-            <span id="duration-value">1.0s</span>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label">Background Color</label>
-            <div class="color-picker">
-              <div class="color-preview" id="color-preview" style="background: #4361ee;"></div>
-              <input type="color" id="color-picker" value="#4361ee">
+        <div class="dashboard">
+            <div class="panel">
+                <div class="panel-header">
+                    <i class="fas fa-sliders-h"></i>
+                    <h2 class="panel-title">Module Configuration</h2>
+                </div>
+                
+                <div class="module-controls">
+                    <!-- Module 1 -->
+                    <div class="module-card active" id="module-1">
+                        <div class="module-card-header">
+                            <div class="module-title">Module 1</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Number of Bookmarks</label>
+                            <div class="range-container">
+                                <input type="range" min="1" max="20" value="8" class="bookmark-count">
+                                <span class="range-value">8</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Display Mode</label>
+                            <select class="display-mode">
+                                <option value="number">Number Only</option>
+                                <option value="name">Name Only</option>
+                                <option value="both" selected>Name & Info</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Font Size</label>
+                            <div class="range-container">
+                                <input type="range" min="12" max="32" value="18" class="font-size">
+                                <span class="range-value">18px</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Bookmark Size</label>
+                            <div class="range-container">
+                                <input type="range" min="100" max="300" value="150" class="bookmark-size">
+                                <span class="range-value">150px</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 2 -->
+                    <div class="module-card" id="module-2">
+                        <div class="module-card-header">
+                            <div class="module-title">Module 2</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Number of Bookmarks</label>
+                            <div class="range-container">
+                                <input type="range" min="1" max="20" value="5" class="bookmark-count">
+                                <span class="range-value">5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Display Mode</label>
+                            <select class="display-mode">
+                                <option value="number">Number Only</option>
+                                <option value="name" selected>Name Only</option>
+                                <option value="both">Name & Info</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Font Size</label>
+                            <div class="range-container">
+                                <input type="range" min="12" max="32" value="16" class="font-size">
+                                <span class="range-value">16px</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Bookmark Size</label>
+                            <div class="range-container">
+                                <input type="range" min="100" max="300" value="120" class="bookmark-size">
+                                <span class="range-value">120px</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 3 -->
+                    <div class="module-card" id="module-3">
+                        <div class="module-card-header">
+                            <div class="module-title">Module 3</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Number of Bookmarks</label>
+                            <div class="range-container">
+                                <input type="range" min="1" max="20" value="12" class="bookmark-count">
+                                <span class="range-value">12</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Display Mode</label>
+                            <select class="display-mode">
+                                <option value="number" selected>Number Only</option>
+                                <option value="name">Name Only</option>
+                                <option value="both">Name & Info</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Font Size</label>
+                            <div class="range-container">
+                                <input type="range" min="12" max="32" value="24" class="font-size">
+                                <span class="range-value">24px</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Bookmark Size</label>
+                            <div class="range-container">
+                                <input type="range" min="100" max="300" value="180" class="bookmark-size">
+                                <span class="range-value">180px</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 4 -->
+                    <div class="module-card" id="module-4">
+                        <div class="module-card-header">
+                            <div class="module-title">Module 4</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Number of Bookmarks</label>
+                            <div class="range-container">
+                                <input type="range" min="1" max="20" value="6" class="bookmark-count">
+                                <span class="range-value">6</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Display Mode</label>
+                            <select class="display-mode">
+                                <option value="number">Number Only</option>
+                                <option value="name">Name Only</option>
+                                <option value="both" selected>Name & Info</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Font Size</label>
+                            <div class="range-container">
+                                <input type="range" min="12" max="32" value="20" class="font-size">
+                                <span class="range-value">20px</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Bookmark Size</label>
+                            <div class="range-container">
+                                <input type="range" min="100" max="300" value="200" class="bookmark-size">
+                                <span class="range-value">200px</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animation-styles">
+                    <h3 class="control-label">Animation Styles</h3>
+                    <div class="animation-style active" data-animation="slide">
+                        <i class="fas fa-sliders-h"></i>
+                        <div>Slide In</div>
+                    </div>
+                    <div class="animation-style" data-animation="fade">
+                        <i class="fas fa-eye"></i>
+                        <div>Fade In</div>
+                    </div>
+                    <div class="animation-style" data-animation="bounce">
+                        <i class="fas fa-basketball-ball"></i>
+                        <div>Bounce In</div>
+                    </div>
+                    <div class="animation-style" data-animation="pop">
+                        <i class="fas fa-expand"></i>
+                        <div>Pop In</div>
+                    </div>
+                    <div class="animation-style" data-animation="flip">
+                        <i class="fas fa-sync"></i>
+                        <div>Flip In</div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="preview-btn">
+                        <i class="fas fa-sync"></i> Update Preview
+                    </button>
+                    <button class="btn btn-secondary" id="reset-btn">
+                        <i class="fas fa-redo"></i> Reset All
+                    </button>
+                </div>
             </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label">Text Color</label>
-            <input type="color" id="text-color-picker" value="#ffffff">
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label">Logo URL</label>
-            <input type="text" id="logo-input" placeholder="Enter logo URL">
-          </div>
+            
+            <div class="panel">
+                <div class="panel-header">
+                    <i class="fas fa-desktop"></i>
+                    <h2 class="panel-title">Preview Panel</h2>
+                </div>
+                
+                <div class="preview-area">
+                    <div class="preview-container">
+                        <div class="preview-title">Module 1 Preview</div>
+                        <div class="lower-third-container" id="module-1-preview">
+                            <!-- Bookmarks will be generated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="preview-container">
+                        <div class="preview-title">Module 2 Preview</div>
+                        <div class="lower-third-container" id="module-2-preview">
+                            <!-- Bookmarks will be generated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="preview-container">
+                        <div class="preview-title">Module 3 Preview</div>
+                        <div class="lower-third-container" id="module-3-preview">
+                            <!-- Bookmarks will be generated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="preview-container">
+                        <div class="preview-title">Module 4 Preview</div>
+                        <div class="lower-third-container" id="module-4-preview">
+                            <!-- Bookmarks will be generated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="btn-group">
-          <button class="btn btn-primary" id="preview-btn">
-            <i class="fas fa-eye"></i> Preview Lower Third
-          </button>
-          <button class="btn btn-secondary" id="reset-btn">
-            <i class="fas fa-redo"></i> Reset
-          </button>
+        <div class="footer">
+            <p>Enhanced Lower Thirds System v2.5 | Professional Broadcast Solution | &copy; 2023 Stream Productions</p>
         </div>
-      </div>
-      
-      <div class="panel">
-        <div class="panel-header">
-          <i class="fas fa-code"></i>
-          <h2 class="panel-title">Export & Integration</h2>
-        </div>
-        
-        <div class="control-group">
-          <label class="control-label">OBS Browser Source URL</label>
-          <input type="text" value="https://yourdomain.com/lower-third.html" readonly>
-        </div>
-        
-        <div class="control-group">
-          <label class="control-label">Broadcast Channel</label>
-          <input type="text" value="obs-lower-thirds-channel" readonly>
-        </div>
-        
-        <div class="control-group">
-          <label class="control-label">Configuration JSON</label>
-          <textarea rows="5" readonly>{
-  "alt_1_style": "1",
-  "alt_1_name": "John Doe",
-  "alt_1_info": "Senior Product Designer",
-  "alt_1_align": "left",
-  "alt_1_animation_time": "1.0"
-}</textarea>
-        </div>
-        
-        <div class="btn-group">
-          <button class="btn btn-primary">
-            <i class="fas fa-download"></i> Export Configuration
-          </button>
-          <button class="btn btn-secondary">
-            <i class="fas fa-copy"></i> Copy to Clipboard
-          </button>
-        </div>
-      </div>
     </div>
-    
-    <div class="preview-area">
-      <div class="preview-container">
-        <div class="preview-title">Lower Third Preview</div>
-        <div class="lower-third" id="lower-third-preview">
-          <div class="logo-container">
-            <i class="fas fa-user"></i>
-          </div>
-          <div class="text-content">
-            <div class="name">John Doe</div>
-            <div class="info">Senior Product Designer</div>
-          </div>
-          <div class="graphics">
-            <div class="graphic"></div>
-            <div class="graphic"></div>
-            <div class="graphic"></div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="preview-container">
-        <div class="preview-title">Mobile Preview</div>
-        <div class="lower-third style-2 center" id="mobile-preview">
-          <div class="logo-container">
-            <i class="fas fa-mobile-alt"></i>
-          </div>
-          <div class="text-content">
-            <div class="name">Mobile View</div>
-            <div class="info">Responsive Design</div>
-          </div>
-          <div class="graphics">
-            <div class="graphic"></div>
-            <div class="graphic"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="footer">
-      <p>Modern Lower Thirds v2.0 | Broadcast-ready animated graphics | &copy; 2023 Stream Productions</p>
-    </div>
-  </div>
 
-  <script>
-    // DOM Elements
-    const styleSelect = document.getElementById('style-select');
-    const positionSelect = document.getElementById('position-select');
-    const nameInput = document.getElementById('name-input');
-    const infoInput = document.getElementById('info-input');
-    const durationSlider = document.getElementById('duration-slider');
-    const durationValue = document.getElementById('duration-value');
-    const colorPicker = document.getElementById('color-picker');
-    const colorPreview = document.getElementById('color-preview');
-    const textColorPicker = document.getElementById('text-color-picker');
-    const logoInput = document.getElementById('logo-input');
-    const previewBtn = document.getElementById('preview-btn');
-    const resetBtn = document.getElementById('reset-btn');
-    const lowerThirdPreview = document.getElementById('lower-third-preview');
-    const mobilePreview = document.getElementById('mobile-preview');
-    
-    // Initialize
-    function init() {
-      updateDurationValue();
-      setupEventListeners();
-    }
-    
-    // Event Listeners
-    function setupEventListeners() {
-      styleSelect.addEventListener('change', updateStyle);
-      positionSelect.addEventListener('change', updatePosition);
-      nameInput.addEventListener('input', updateContent);
-      infoInput.addEventListener('input', updateContent);
-      durationSlider.addEventListener('input', updateDuration);
-      colorPicker.addEventListener('input', updateColor);
-      textColorPicker.addEventListener('input', updateTextColor);
-      previewBtn.addEventListener('click', previewLowerThird);
-      resetBtn.addEventListener('click', resetForm);
-    }
-    
-    // Update functions
-    function updateStyle() {
-      lowerThirdPreview.className = 'lower-third ' + styleSelect.value;
-      lowerThirdPreview.classList.add(positionSelect.value);
-    }
-    
-    function updatePosition() {
-      // Remove all position classes
-      lowerThirdPreview.classList.remove('left', 'center', 'right');
-      // Add the selected position class
-      lowerThirdPreview.classList.add(positionSelect.value);
-    }
-    
-    function updateContent() {
-      document.querySelector('#lower-third-preview .name').textContent = nameInput.value;
-      document.querySelector('#lower-third-preview .info').textContent = infoInput.value;
-    }
-    
-    function updateDuration() {
-      durationValue.textContent = durationSlider.value + 's';
-      // In a real implementation, this would update animation duration
-    }
-    
-    function updateColor() {
-      colorPreview.style.background = colorPicker.value;
-      // Update the lower third background
-      lowerThirdPreview.style.background = `linear-gradient(90deg, ${colorPicker.value}, ${darkenColor(colorPicker.value, 20)})`;
-    }
-    
-    function updateTextColor() {
-      lowerThirdPreview.style.color = textColorPicker.value;
-    }
-    
-    function previewLowerThird() {
-      // Add animation class
-      lowerThirdPreview.classList.add('animate');
-      
-      // Remove animation class after animation completes
-      setTimeout(() => {
-        lowerThirdPreview.classList.remove('animate');
-      }, parseFloat(durationSlider.value) * 1000);
-    }
-    
-    function resetForm() {
-      styleSelect.value = 'style-1';
-      positionSelect.value = 'left';
-      nameInput.value = 'John Doe';
-      infoInput.value = 'Senior Product Designer';
-      durationSlider.value = '1';
-      colorPicker.value = '#4361ee';
-      textColorPicker.value = '#ffffff';
-      logoInput.value = '';
-      
-      updateDurationValue();
-      updateStyle();
-      updatePosition();
-      updateContent();
-      updateColor();
-      updateTextColor();
-    }
-    
-    function updateDurationValue() {
-      durationValue.textContent = durationSlider.value + 's';
-    }
-    
-    // Helper function to darken a color
-    function darkenColor(hex, percent) {
-      // Remove # if present
-      hex = hex.replace(/^#/, '');
-      
-      // Parse hex to RGB
-      const r = parseInt(hex.substring(0, 2), 16);
-      const g = parseInt(hex.substring(2, 4), 16);
-      const b = parseInt(hex.substring(4, 6), 16);
-      
-      // Darken each component
-      const darken = (value) => Math.max(0, value - value * percent / 100);
-      
-      // Convert back to hex
-      const toHex = (value) => {
-        const hex = Math.round(value).toString(16);
-        return hex.length === 1 ? '0' + hex : hex;
-      };
-      
-      return `#${toHex(darken(r))}${toHex(darken(g))}${toHex(darken(b))}`;
-    }
-    
-    // Initialize the application
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
+    <script>
+        // Sample data for bookmarks
+        const bookmarkData = [
+            { number: 1, name: "Introduction", info: "Opening segment" },
+            { number: 2, name: "Main Topic", info: "Core discussion" },
+            { number: 3, name: "Case Study", info: "Real-world example" },
+            { number: 4, name: "Analysis", info: "Detailed breakdown" },
+            { number: 5, name: "Interview", info: "Guest speaker" },
+            { number: 6, name: "Q&A", info: "Audience questions" },
+            { number: 7, name: "Review", info: "Key points" },
+            { number: 8, name: "Preview", info: "Next episode" },
+            { number: 9, name: "Sponsor", info: "Commercial break" },
+            { number: 10, name: "Closing", info: "Final thoughts" },
+            { number: 11, name: "Credits", info: "Production team" },
+            { number: 12, name: "Extra", info: "Bonus content" }
+        ];
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all modules
+            initializeModules();
+            
+            // Add event listeners
+            document.getElementById('preview-btn').addEventListener('click', updateAllPreviews);
+            document.getElementById('reset-btn').addEventListener('click', resetAllModules);
+            
+            // Add event listeners for animation styles
+            const animationStyles = document.querySelectorAll('.animation-style');
+            animationStyles.forEach(style => {
+                style.addEventListener('click', function() {
+                    animationStyles.forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+                    updateAllPreviews();
+                });
+            });
+            
+            // Initial preview update
+            updateAllPreviews();
+        });
+
+        // Initialize module controls
+        function initializeModules() {
+            for (let i = 1; i <= 4; i++) {
+                const module = document.getElementById(`module-${i}`);
+                
+                // Toggle switch
+                const toggle = module.querySelector('input[type="checkbox"]');
+                toggle.addEventListener('change', function() {
+                    module.classList.toggle('active', this.checked);
+                    updatePreview(i);
+                });
+                
+                // Bookmark count
+                const countInput = module.querySelector('.bookmark-count');
+                const countValue = module.querySelector('.range-value');
+                countInput.addEventListener('input', function() {
+                    countValue.textContent = this.value;
+                    updatePreview(i);
+                });
+                
+                // Display mode
+                const displayMode = module.querySelector('.display-mode');
+                displayMode.addEventListener('change', function() {
+                    updatePreview(i);
+                });
+                
+                // Font size
+                const fontSize = module.querySelector('.font-size');
+                const fontSizeValue = module.querySelectorAll('.range-value')[1];
+                fontSize.addEventListener('input', function() {
+                    fontSizeValue.textContent = `${this.value}px`;
+                    updatePreview(i);
+                });
+                
+                // Bookmark size
+                const bookmarkSize = module.querySelector('.bookmark-size');
+                const bookmarkSizeValue = module.querySelectorAll('.range-value')[2];
+                bookmarkSize.addEventListener('input', function() {
+                    bookmarkSizeValue.textContent = `${this.value}px`;
+                    updatePreview(i);
+                });
+            }
+        }
+
+        // Update all previews
+        function updateAllPreviews() {
+            for (let i = 1; i <= 4; i++) {
+                updatePreview(i);
+            }
+        }
+
+        // Update a specific preview
+        function updatePreview(moduleNumber) {
+            const module = document.getElementById(`module-${moduleNumber}`);
+            const preview = document.getElementById(`module-${moduleNumber}-preview`);
+            
+            // Check if module is active
+            const isActive = module.classList.contains('active');
+            preview.style.display = isActive ? 'flex' : 'none';
+            
+            if (!isActive) return;
+            
+            // Get module settings
+            const bookmarkCount = parseInt(module.querySelector('.bookmark-count').value);
+            const displayMode = module.querySelector('.display-mode').value;
+            const fontSize = parseInt(module.querySelector('.font-size').value);
+            const bookmarkSize = parseInt(module.querySelector('.bookmark-size').value);
+            const animationStyle = document.querySelector('.animation-style.active').dataset.animation;
+            
+            // Clear preview
+            preview.innerHTML = '';
+            
+            // Generate bookmarks
+            for (let i = 0; i < bookmarkCount; i++) {
+                const bookmark = document.createElement('div');
+                bookmark.className = `bookmark animate-${animationStyle}`;
+                bookmark.style.width = `${bookmarkSize}px`;
+                
+                const data = bookmarkData[i % bookmarkData.length];
+                
+                switch (displayMode) {
+                    case 'number':
+                        bookmark.innerHTML = `
+                            <div class="bookmark-number" style="font-size: ${fontSize}px">${data.number}</div>
+                        `;
+                        break;
+                    case 'name':
+                        bookmark.innerHTML = `
+                            <div class="bookmark-name" style="font-size: ${fontSize}px">${data.name}</div>
+                        `;
+                        break;
+                    case 'both':
+                        bookmark.innerHTML = `
+                            <div class="bookmark-number" style="font-size: ${fontSize}px">${data.number}</div>
+                            <div class="bookmark-name" style="font-size: ${fontSize - 4}px">${data.name}</div>
+                            <div class="bookmark-info" style="font-size: ${fontSize - 6}px">${data.info}</div>
+                        `;
+                        break;
+                }
+                
+                preview.appendChild(bookmark);
+            }
+        }
+
+        // Reset all modules to default settings
+        function resetAllModules() {
+            for (let i = 1; i <= 4; i++) {
+                const module = document.getElementById(`module-${i}`);
+                
+                // Activate module
+                const toggle = module.querySelector('input[type="checkbox"]');
+                toggle.checked = i === 1;
+                module.classList.toggle('active', i === 1);
+                
+                // Reset controls
+                if (i === 1) {
+                    module.querySelector('.bookmark-count').value = 8;
+                    module.querySelectorAll('.range-value')[0].textContent = '8';
+                    module.querySelector('.display-mode').value = 'both';
+                    module.querySelector('.font-size').value = 18;
+                    module.querySelectorAll('.range-value')[1].textContent = '18px';
+                    module.querySelector('.bookmark-size').value = 150;
+                    module.querySelectorAll('.range-value')[2].textContent = '150px';
+                } else if (i === 2) {
+                    module.querySelector('.bookmark-count').value = 5;
+                    module.querySelectorAll('.range-value')[0].textContent = '5';
+                    module.querySelector('.display-mode').value = 'name';
+                    module.querySelector('.font-size').value = 16;
+                    module.querySelectorAll('.range-value')[1].textContent = '16px';
+                    module.querySelector('.bookmark-size').value = 120;
+                    module.querySelectorAll('.range-value')[2].textContent = '120px';
+                } else if (i === 3) {
+                    module.querySelector('.bookmark-count').value = 12;
+                    module.querySelectorAll('.range-value')[0].textContent = '12';
+                    module.querySelector('.display-mode').value = 'number';
+                    module.querySelector('.font-size').value = 24;
+                    module.querySelectorAll('.range-value')[1].textContent = '24px';
+                    module.querySelector('.bookmark-size').value = 180;
+                    module.querySelectorAll('.range-value')[2].textContent = '180px';
+                } else {
+                    module.querySelector('.bookmark-count').value = 6;
+                    module.querySelectorAll('.range-value')[0].textContent = '6';
+                    module.querySelector('.display-mode').value = 'both';
+                    module.querySelector('.font-size').value = 20;
+                    module.querySelectorAll('.range-value')[1].textContent = '20px';
+                    module.querySelector('.bookmark-size').value = 200;
+                    module.querySelectorAll('.range-value')[2].textContent = '200px';
+                }
+            }
+            
+            // Reset animation style
+            document.querySelectorAll('.animation-style').forEach(style => {
+                style.classList.remove('active');
+                if (style.dataset.animation === 'slide') {
+                    style.classList.add('active');
+                }
+            });
+            
+            // Update previews
+            updateAllPreviews();
+        }
+    </script>
 </body>
 </html>
